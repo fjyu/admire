@@ -1,0 +1,25 @@
+{
+    "name": "appjs-test",
+    "version": "1.0.0",
+    "description": "test application implemented in JavaScript",
+    "engines": {
+        "node": ">=12",
+        "npm": ">=5"
+    },
+    "scripts": {
+        "lint": "eslint *.js",
+        "pretest": "npm run lint"
+    },
+    "engineStrict": true,
+    "author": "fjyu@whu.edu.cn",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "fabric-ca-client": "^2.2.4",
+        "fabric-network": "^2.2.4",
+        "sqlite3":"^5.1.1",
+        "yargs":"^17.5.1"	
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0"
+    }
+}

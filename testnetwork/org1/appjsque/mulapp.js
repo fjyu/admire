@@ -1,4 +1,3 @@
-// 用来查询的脚本
 'use strict';
 
 const { Gateway, Wallets } = require('fabric-network');
@@ -137,20 +136,20 @@ async function main() {
 			console.time("Multiway query")
 			//保存块号集合到JSON文件
 			var blocknumsSTR = JSON.stringify(blocknumsOBJ)
-			fs.writeFileSync("/home/john/bcir/fabric/testnetwork/ProofPathRoot/blocknums.json", blocknumsSTR)
+			fs.writeFileSync("/home/john/bcir/fabric/testnetwork/genchkprf/blocknums.json", blocknumsSTR)
 
 			// 保存块号哈希集合到JSON文件
 			var blockHashSTR = JSON.stringify(blockHashOBJ)
-			fs.writeFileSync("/home/john/bcir/fabric/testnetwork/ProofPathRoot/blockHash.json", blockHashSTR)
+			fs.writeFileSync("/home/john/bcir/fabric/testnetwork/genchkprf/blockHash.json", blockHashSTR)
 
 			console.time("proofroottime")
 			//获取ProofPath
-			execSync("/home/john/bcir/fabric/testnetwork/ProofPathRoot/main -p /home/john/bcir/fabric/testnetwork/ProofPathRoot/blocknums.json /home/john/bcir/fabric/testnetwork/ProofPathRoot/proofpath.json /home/john/bcir/fabric/testnetwork/test.db " + String(blockNumAll - 1))
+			execSync("/home/john/bcir/fabric/testnetwork/genchkprf/main -p /home/john/bcir/fabric/testnetwork/genchkprf/blocknums.json /home/john/bcir/fabric/testnetwork/genchkprf/proofpath.json /home/john/bcir/fabric/testnetwork/test.db " + String(blockNumAll - 1))
 
 			//end
 
 			//获取proofRoot
-			execSync("/home/john/bcir/fabric/testnetwork/ProofPathRoot/main -r /home/john/bcir/fabric/testnetwork/ProofPathRoot/blockHash.json /home/john/bcir/fabric/testnetwork/ProofPathRoot/proofpath.json " + String(blockNumAll - 1))
+			execSync("/home/john/bcir/fabric/testnetwork/genchkprf/main -r /home/john/bcir/fabric/testnetwork/genchkprf/blockHash.json /home/john/bcir/fabric/testnetwork/genchkprf/proofpath.json " + String(blockNumAll - 1))
 			console.timeEnd("proofroottime")
 
 			//end
